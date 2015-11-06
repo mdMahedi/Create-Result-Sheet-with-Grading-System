@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MyMaster.master.cs" Inherits="StudyDBPractice.MyMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="MyDesign.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 1344px;
+            height: 113px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="hd" class="d">
+            <h1>
+                <img alt="Secondary School Education Board, Dhaka" class="auto-style1" src="image/Logo_copy.jpg" /></h1>
+        </div>
+        <div id="nv" class="d">
+            <asp:Button ID="Button6" runat="server" Text="Home" OnClick="Button6_Click" />
+            <asp:Button ID="Button1" runat="server" Text="Insert Marks" OnClick="Button1_Click" />
+            <asp:Button ID="Button2" runat="server" Text="Mark-Sheet" OnClick="Button2_Click" />
+            <asp:Button ID="Button5" runat="server" Text="Search Mark-Sheet" OnClick="Button5_Click" />
+            <asp:Button ID="Button3" runat="server" Text="Result" OnClick="Button3_Click" />
+            <asp:Button ID="Button4" runat="server" Text="Search Result" OnClick="Button4_Click" />            
+        </div>
+        <div id="n" class="nn">
+
+        </div>
+        <div id="as" class="d">
+            <img width="230" src="image/4-Milestone-college-SSC-result-2014-copy.jpg" /><br />
+            <img width="230" src="image/ssc-and-hsc-results.jpg" />
+        </div>
+        <div id="main" class="d">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="aa" class="nn">
+
+        </div>
+        
+        <div id="fo" class="d">
+            <b><u>Contact Info :</u></b>
+            <br />
+            <b style="font-style:italic">Md. Mahedi Hasan</b><br />
+            Email : <a href="mailto:md.mahedihasan15@hotmail.com">md.mahedihasan15@hotmail.com</a><br />
+            Website : <a target="_blank" href="http://md-mahedi-hasan.branded.me/">http://md-mahedi-hasan.branded.me/</a><br />
+            <b> Mobile : +8801920007648</b>
+        </div>
+    </form>
+</body>
+</html>

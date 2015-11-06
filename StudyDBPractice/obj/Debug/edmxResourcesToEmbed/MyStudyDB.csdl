@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Products1">
+    <Key>
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pprice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="pqty" Type="Int32" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="SalesDetails1" Relationship="Self.FK__SalesDetail__pid__1FCDBCEB" FromRole="Products1" ToRole="SalesDetails1" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="CopyContact">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="101" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ExamMark">
+    <Key>
+      <PropertyRef Name="StdID" />
+      <PropertyRef Name="Bangla" />
+      <PropertyRef Name="English" />
+      <PropertyRef Name="Mathmatics" />
+    </Key>
+    <Property Name="StdID" Type="Int32" Nullable="false" />
+    <Property Name="StdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Bangla" Type="Int32" Nullable="false" />
+    <Property Name="English" Type="Int32" Nullable="false" />
+    <Property Name="Mathmatics" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MarkPoint">
+    <Key>
+      <PropertyRef Name="StdID" />
+    </Key>
+    <Property Name="StdID" Type="Int32" Nullable="false" />
+    <Property Name="StdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Bangla" Type="Int32" />
+    <Property Name="English" Type="Int32" />
+    <Property Name="Mathmatics" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MarkSheet">
+    <Key>
+      <PropertyRef Name="StdID" />
+      <PropertyRef Name="Bangla" />
+      <PropertyRef Name="English" />
+      <PropertyRef Name="Mathmatics" />
+      <PropertyRef Name="Religion" />
+      <PropertyRef Name="SocialScience" />
+      <PropertyRef Name="Physics" />
+      <PropertyRef Name="Chemistry" />
+      <PropertyRef Name="Biology" />
+      <PropertyRef Name="HigherMath" />
+    </Key>
+    <Property Name="StdID" Type="Int32" Nullable="false" />
+    <Property Name="StdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Bangla" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="English" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Mathmatics" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Religion" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="SocialScience" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Physics" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Chemistry" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Biology" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="HigherMath" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProblemForUpdateTrigger">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RecordStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifyDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SalesDetails1">
+    <Key>
+      <PropertyRef Name="invID" />
+    </Key>
+    <Property Name="invID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="salesDate" Type="DateTime" Precision="3" />
+    <Property Name="salesPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="salesQty" Type="Int32" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="pid" Type="Int32" />
+    <NavigationProperty Name="Products1" Relationship="Self.FK__SalesDetail__pid__1FCDBCEB" FromRole="SalesDetails1" ToRole="Products1" />
+  </EntityType>
+  <Association Name="FK__SalesDetail__pid__1FCDBCEB">
+    <End Role="Products1" Type="Self.Products1" Multiplicity="0..1" />
+    <End Role="SalesDetails1" Type="Self.SalesDetails1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products1">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="SalesDetails1">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StudyDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Products1" EntityType="Self.Products1" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="CopyContacts" EntityType="Self.CopyContact" />
+    <EntitySet Name="ExamMarks" EntityType="Self.ExamMark" />
+    <EntitySet Name="MarkPoints" EntityType="Self.MarkPoint" />
+    <EntitySet Name="MarkSheets" EntityType="Self.MarkSheet" />
+    <EntitySet Name="ProblemForUpdateTriggers" EntityType="Self.ProblemForUpdateTrigger" />
+    <EntitySet Name="SalesDetails1" EntityType="Self.SalesDetails1" />
+    <AssociationSet Name="FK__SalesDetail__pid__1FCDBCEB" Association="Self.FK__SalesDetail__pid__1FCDBCEB">
+      <End Role="Products1" EntitySet="Products1" />
+      <End Role="SalesDetails1" EntitySet="SalesDetails1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
